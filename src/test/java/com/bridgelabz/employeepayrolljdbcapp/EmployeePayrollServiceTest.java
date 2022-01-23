@@ -51,7 +51,26 @@ public class EmployeePayrollServiceTest
 		employeePayrollService.updateEmployeeSalary("Bill", 7000000.00);
 		
 		boolean result = employeePayrollService.checkEmployeePayrollInSyncWithDB("Bill");
-		Assert.assertFalse(result);
+		Assert.assertTrue(result);
 		
+	}
+	@Test
+	public void givenName_WhenFound_ShouldReturnEmployeeDetails() {
+		
+		EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+		String name = "Rosa Diaz";
+		List<EmployeePayrollData> employeePayrollData = employeePayrollService.getEmployeeDetailsBasedOnName(IOService.DB_IO, name);
+		String resultName = employeePayrollData.get(0).employeeName;
+		Assert.assertEquals(name, resultName);
+	}
+	
+	@Test
+	public void givenStartDateRange_WhenMatches_ShouldReturnEmployeeDetails() {
+		
+		String startDate = "2013-01-01";
+		EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+		List<EmployeePayrollData> employeePayrollData = employeePayrollService.getEmployeeDetailsBasedOnStartDate(IOService.DB_IO, startDate);
+		System.out.println(employeePayrollData.size());
+		Assert.assertEquals(1, employeePayrollData.size());
 	}
 }
