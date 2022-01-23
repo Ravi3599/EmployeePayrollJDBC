@@ -51,8 +51,7 @@ public class EmployeePayrollServiceTest
 		employeePayrollService.updateEmployeeSalary("Bill", 7000000.00);
 		
 		boolean result = employeePayrollService.checkEmployeePayrollInSyncWithDB("Bill");
-		System.out.println(result);
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 		
 	}
 }
