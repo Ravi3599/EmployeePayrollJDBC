@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class EmployeePayrollDBService {
 	private PreparedStatement employeePayrollDataStatement;
 	private static EmployeePayrollDBService employeePayrollDBService;
@@ -115,7 +114,7 @@ public class EmployeePayrollDBService {
 		
 		try {
 			Connection connection = this.getConnection();
-			String sqlStatement = "SELECT * FROM employee,payroll WHERE employee.payroll_id = payroll.payroll.id AND name = ?;";
+			String sqlStatement = "SELECT * FROM employee,payroll WHERE employee.payroll_id = payroll.payroll_id AND name = ?;";
 			employeePayrollDataStatement = connection.prepareStatement(sqlStatement);
 		}
 		catch(SQLException e) {
